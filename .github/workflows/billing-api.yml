@@ -6,7 +6,7 @@ on:
 
 jobs:
   pipeline:
-    uses: khoi-thinh/ci-cd-templates/.github/workflows/node-ec2.yaml@v2
+    uses: khoi-thinh/ci-cd-templates/.github/workflows/node-ec2.yaml@v3
     with:
       app_name: billing-api
       deploy_path: /opt/billing-api
