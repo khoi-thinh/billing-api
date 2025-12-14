@@ -11,3 +11,4 @@ jobs:
       app_name: billing-api
       deploy_path: /opt/billing-api
       start_command: "node src/index.js"
+    secrets: inherit 
