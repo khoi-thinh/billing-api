@@ -1,0 +1,12 @@
+name: billing-api-pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  call-shared-pipeline:
+    uses: khoi-thinh/ci-cd-templates/.github/workflows/node-ec2.yaml@v1
+    with:
+      app_name: billing-api
+      deploy_path: /opt/billing-api
