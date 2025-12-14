@@ -8,7 +8,7 @@ app.get("/health", (req, res) => {
 app.get("/billing", (req, res) => {
   res.json({
     service: "billing-api",
-    amount: 700,
+    amount: 800,
     currency: "USD"
   });
 });
