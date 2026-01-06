@@ -2,7 +2,9 @@ name: Billing API CI/CD
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
+      - 'feature/**'
 
 jobs:
   pipeline:
@@ -10,4 +12,5 @@ jobs:
     with:
       app_name: billing-api
       deploy_path: /opt/billing-api
-    secrets: inherit 
+    secrets: inherit
+
