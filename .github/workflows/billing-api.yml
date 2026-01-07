@@ -7,10 +7,20 @@ on:
       - 'feature/**'
 
 jobs:
-  pipeline:
+  # Only runs for features
+  deploy-dev:
+    if: startsWith(github.ref_name, 'feature/')
     uses: khoi-thinh/ci-cd-templates/.github/workflows/node-ec2.yaml@v4
     with:
-      app_name: billing-api
+      app_name: billing-api-dev
       deploy_path: /opt/billing-api
     secrets: inherit
 
+  # Only runs for main
+  deploy-prod:
+    if: github.ref_name == 'main'
+    uses: khoi-thinh/ci-cd-templates/.github/workflows/node-ec2.yaml@v4
+    with:
+      app_name: billing-api-prod
+      deploy_path: /opt/billing-api
+    secrets: inherit
