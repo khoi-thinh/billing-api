@@ -12,8 +12,10 @@ jobs:
     if: startsWith(github.ref_name, 'feature/')
     uses: khoi-thinh/ci-cd-templates/.github/workflows/node-ec2.yaml@v4
     with:
-      app_name: billing-api-dev
+      app_name: billing-api
       deploy_path: /opt/billing-api
+      environment: dev
+      host: ${{ secrets.DEV_EC2_HOST }}
     secrets: inherit
 
   # Only runs for main
@@ -21,6 +23,8 @@ jobs:
     if: github.ref_name == 'main'
     uses: khoi-thinh/ci-cd-templates/.github/workflows/node-ec2.yaml@v4
     with:
-      app_name: billing-api-prod
+      app_name: billing-api
       deploy_path: /opt/billing-api
+      environment: production
+      host: ${{ secrets.PROD_EC2_HOST }}
     secrets: inherit
