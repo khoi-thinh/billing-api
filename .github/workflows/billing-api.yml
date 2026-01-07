@@ -9,7 +9,7 @@ on:
 jobs:
   deploy-dev:
     if: startsWith(github.ref_name, 'feature/')
-    uses: khoi-thinh/ci-cd-templates/.github/workflows/node-ec2.yaml@v4
+    uses: khoi-thinh/ci-cd-templates/.github/workflows/node-ec2.yaml@v5
     with:
       app_name: billing-api
       deploy_path: /opt/billing-api
@@ -21,7 +21,7 @@ jobs:
 
   deploy-prod:
     if: github.ref_name == 'main'
-    uses: khoi-thinh/ci-cd-templates/.github/workflows/node-ec2.yaml@v4
+    uses: khoi-thinh/ci-cd-templates/.github/workflows/node-ec2.yaml@v5
     with:
       app_name: billing-api
       deploy_path: /opt/billing-api
