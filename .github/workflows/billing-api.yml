@@ -7,7 +7,6 @@ on:
       - 'feature/**'
 
 jobs:
-  # Only runs for features
   deploy-dev:
     if: startsWith(github.ref_name, 'feature/')
     uses: khoi-thinh/ci-cd-templates/.github/workflows/node-ec2.yaml@v4
@@ -15,10 +14,11 @@ jobs:
       app_name: billing-api
       deploy_path: /opt/billing-api
       environment: dev
-      host: ${{ secrets.DEV_EC2_HOST }}
-    secrets: inherit
+    secrets:
+      EC2_HOST: ${{ secrets.DEV_EC2_HOST }}
+      EC2_USER: ${{ secrets.EC2_USER }}
+      EC2_SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
 
-  # Only runs for main
   deploy-prod:
     if: github.ref_name == 'main'
     uses: khoi-thinh/ci-cd-templates/.github/workflows/node-ec2.yaml@v4
@@ -26,5 +26,8 @@ jobs:
       app_name: billing-api
       deploy_path: /opt/billing-api
       environment: production
-      host: ${{ secrets.PROD_EC2_HOST }}
-    secrets: inherit
+    secrets:
+      EC2_HOST: ${{ secrets.PROD_EC2_HOST }}
+      EC2_USER: ${{ secrets.EC2_USER }}
+      EC2_SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
+
