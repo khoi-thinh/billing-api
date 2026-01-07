@@ -9,7 +9,7 @@ app.get("/billing", (req, res) => {
   res.json({
     service: "billing-api",
     amount: 900,
-    currency: "JPY"
+    currency: "EURO"
   });
 });
 
